@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+  root to: 'public/homes#top'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    root to: 'homes#top'
     get 'homes/about'
+    get 'unsubscribe/:name' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:name' => 'customers#withdraw'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]

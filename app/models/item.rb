@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   
   attachment :image
-  has_many :ges, dependent: :destroy
+  belongs_to :genre
+  has_many :order_details
+  has_many :cart_items
   
 end
