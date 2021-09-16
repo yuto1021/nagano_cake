@@ -12,6 +12,9 @@
 <%= @item.genre.name %>
 
 <h5>税込価格</h5>
+<%= (@item.price * 1.1).floor %>
+
+<h5>税抜価格</h5>
 <%= @item.price %>
 
 <h5>販売ステータス</h5>

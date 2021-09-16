@@ -30,8 +30,7 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to admin_items_path(@item.id)
   end
-
-
+  
   private
 
   def item_params

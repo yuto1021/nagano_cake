@@ -9,6 +9,10 @@
 <%= @item.introduction %>
 
 <h5>税込価格</h5>
-<%= @item.price %>
+¥<%= @item.with_tax_price %>(税込)
 
-<%= f.select @item, :amount, *[1..5] %>
+<%= form_with model: @cart_item, url:public_cart_items_path, local:true do |f| %>
+  <%= f.number_field :amount %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.submit "カートに入れる", class: "btn btn-success" %>
+<% end %>

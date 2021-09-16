@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   def index
+    @customer = current_customer
     @customers = Customer.all
   end
 
