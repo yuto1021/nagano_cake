@@ -28,11 +28,12 @@ Rails.application.routes.draw do
     get 'unsubscribe/:name' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
+    post 'orders/confirm' => 'orders#confirm'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
-    resources :addresses, only: [:index, :edit, :create, :destroy]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
 end
